@@ -1,0 +1,3815 @@
+
+R version 3.1.3 (2015-03-09) -- "Smooth Sidewalk"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "clusteringPkg"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('clusteringPkg')
+Loading required package: RCurl
+Loading required package: bitops
+Loading required package: pmml
+Loading required package: XML
+Loading required package: jsonlite
+
+Attaching package: ‘jsonlite’
+
+The following object is masked from ‘package:utils’:
+
+    View
+
+Loading required package: blockcluster
+blockcluster version 3.0.2 loaded
+
+----------------
+Copyright (C)  <MODAL team @INRIA,Lille & U.M.R. C.N.R.S. 6599 Heudiasyc, UTC>
+Please post questions and bugs at: <https://gforge.inria.fr/forum/forum.php?forum_id=11190&group_id=3679>
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:base’:
+
+    crossprod, tcrossprod
+
+Loading required package: vegan
+Loading required package: permute
+Loading required package: lattice
+This is vegan 2.0-10
+Loading required package: jpeg
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("clusteringPkg-package")
+> ### * clusteringPkg-package
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: clusteringPkg-package
+> ### Title: Generate cluster memberships
+> ### Aliases: clusteringPkg-package clusteringPkg
+> ### Keywords: package
+> 
+> ### ** Examples
+> 
+> 
+> data("dat11")
+> 
+> predF<- list()
+> 
+> required.param<- list(xID="proteins", yID=list(), distMethod="manhattan",
++ hclustMethod="ward.D2",nORh="mean")
+> 
+> hierar1<- generate.hierar.model(dat11,predF,required.param)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat1")
+> ### * dat1
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat1
+> ### Title: A sample data object
+> ### Aliases: dat1
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(dat1)
+> ## maybe str(dat1) ; plot(dat1) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat11")
+> ### * dat11
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat11
+> ### Title: A sample data object
+> ### Aliases: dat11
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(dat11)
+> ## maybe str(dat11) ; plot(dat11) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat11i")
+> ### * dat11i
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat11i
+> ### Title: Information for hierarchical clustering
+> ### Aliases: dat11i
+> ### Keywords: datasetsi2
+> 
+> ### ** Examples
+> 
+> data(dat11i)
+> ## maybe str(dat11i) ; plot(dat11i) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat11m")
+> ### * dat11m
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat11m
+> ### Title: Serialized hierarchical clustering model file
+> ### Aliases: dat11m
+> ### Keywords: datasetsm2
+> 
+> ### ** Examples
+> 
+> data(dat11m)
+> ## maybe str(dat11m) ; plot(dat11m) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat11p")
+> ### * dat11p
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat11p
+> ### Title: A sample data object
+> ### Aliases: dat11p
+> ### Keywords: datasetsp2
+> 
+> ### ** Examples
+> 
+> data(dat11p)
+> ## maybe str(dat11p) ; plot(dat11p) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat1i")
+> ### * dat1i
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat1i
+> ### Title: Information for bi-clustering
+> ### Aliases: dat1i
+> ### Keywords: datasetsi
+> 
+> ### ** Examples
+> 
+> data(dat1i)
+> ## maybe str(dat1i) ; plot(dat1i) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat1m")
+> ### * dat1m
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat1m
+> ### Title: Serialized bi-clust model file
+> ### Aliases: dat1m
+> ### Keywords: datasetsm
+> 
+> ### ** Examples
+> 
+> data(dat1m)
+> ## maybe str(dat1m) ; plot(dat1m) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("dat1p")
+> ### * dat1p
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: dat1p
+> ### Title: A sample data object
+> ### Aliases: dat1p
+> ### Keywords: datasetsp
+> 
+> ### ** Examples
+> 
+> data(dat1p)
+> ## maybe str(dat1p) ; plot(dat1p) ...
+> 
+> 
+> 
+> cleanEx()
+> nameEx("generate.biclust.model")
+> ### * generate.biclust.model
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: generate.biclust.model
+> ### Title: Generate bi-clustering model based on blockcluster package.
+> ### Aliases: generate.biclust.model
+> ### Keywords: generateBiclustModel
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> 
+> data("dat1")
+> 
+> predF<- list()
+> 
+> required.param<- list(xID='proteins',yID='NPs',datatype='categorical',nclust=c(1,2))
+> 
+> biclust1<- generate.biclust.model(dat1,predF,required.param)
+Co-Clustering successfully terminated! 
+******************************************************************
+Model Family : Categorical Latent block model
+Model Name : pik_rhol_multi
+Co-Clustering Type : Unsupervised
+ICL value:  -41172.69
+
+Model Parameters..
+
+Class Mean:
+******************************************************************
+
+Proability for category 1 in various blocks
+********************************************
+          [,1]      [,2]
+[1,] 0.9749593 0.4794852
+
+Proability for category 2 in various blocks
+********************************************
+           [,1]       [,2]
+[1,] 0.01142602 0.05730245
+
+Proability for category 3 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 0.005036443 0.05051893
+
+Proability for category 4 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 0.001912348 0.03902604
+
+Proability for category 5 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 0.001150049 0.03099615
+
+Proability for category 6 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 0.0006545137 0.02821259
+
+Proability for category 7 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 0.0004255465 0.02252205
+
+Proability for category 8 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 0.0003354724 0.02210359
+
+Proability for category 9 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 0.000248367 0.02016495
+
+Proability for category 10 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 0.000230164 0.01501803
+
+Proability for category 11 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 0.000212512 0.01340853
+
+Proability for category 12 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 0.0001766336 0.01223165
+
+Proability for category 13 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 0.0001588564 0.01062291
+
+Proability for category 14 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 7.064545e-05 0.009549357
+
+Proability for category 15 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 0.0001590408 0.009012347
+
+Proability for category 16 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 7.073277e-05 0.007402906
+
+Proability for category 17 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532325e-05 0.007618023
+
+Proability for category 18 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.005150212
+
+Proability for category 19 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 0.0001237168 0.005686173
+
+Proability for category 20 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532321e-05 0.005364805
+
+Proability for category 21 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 5.298397e-05 0.004828329
+
+Proability for category 22 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 0.0001059696 0.005150212
+
+Proability for category 23 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 0.0001237176 0.00396943
+
+Proability for category 24 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 7.064641e-05 0.005042916
+
+Proability for category 25 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 1.774803e-05 0.003218358
+
+Proability for category 26 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 5.298474e-05 0.002682403
+
+Proability for category 27 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 8.830802e-05 0.003111587
+
+Proability for category 28 in various blocks
+********************************************
+             [,1]       [,2]
+[1,] 5.298481e-05 0.00246781
+
+Proability for category 29 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.540963e-05 0.002359989
+
+Proability for category 30 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.002145922
+
+Proability for category 31 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.003969955
+
+Proability for category 32 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 7.064641e-05 0.002360514
+
+Proability for category 33 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.002038626
+
+Proability for category 34 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 1.766165e-05 0.003540771
+
+Proability for category 35 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 1.774803e-05 0.002252693
+
+Proability for category 36 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001609441
+
+Proability for category 37 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001609441
+
+Proability for category 38 in various blocks
+********************************************
+     [,1]       [,2]
+[1,]    0 0.00193133
+
+Proability for category 39 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.001609441
+
+Proability for category 40 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.002145922
+
+Proability for category 41 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.002253218
+
+Proability for category 42 in various blocks
+********************************************
+     [,1]       [,2]
+[1,]    0 0.00193133
+
+Proability for category 43 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001609441
+
+Proability for category 44 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001824034
+
+Proability for category 45 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532321e-05 0.001180257
+
+Proability for category 46 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.002038626
+
+Proability for category 47 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532321e-05 0.002360514
+
+Proability for category 48 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532321e-05 0.001180257
+
+Proability for category 49 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0008583688
+
+Proability for category 50 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.001287553
+
+Proability for category 51 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.001180257
+
+Proability for category 52 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0006437766
+
+Proability for category 53 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001072961
+
+Proability for category 54 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001502145
+
+Proability for category 55 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0008583688
+
+Proability for category 56 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.001609441
+
+Proability for category 57 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532321e-05 0.001287553
+
+Proability for category 58 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001287553
+
+Proability for category 59 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001072961
+
+Proability for category 60 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001394849
+
+Proability for category 61 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001072961
+
+Proability for category 62 in various blocks
+********************************************
+            [,1]       [,2]
+[1,] 1.76616e-05 0.00193133
+
+Proability for category 63 in various blocks
+********************************************
+             [,1]        [,2]
+[1,] 3.532321e-05 0.001502145
+
+Proability for category 64 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001180257
+
+Proability for category 65 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0008583688
+
+Proability for category 66 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0005364805
+
+Proability for category 67 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0009656648
+
+Proability for category 68 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0005364805
+
+Proability for category 69 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0007510727
+
+Proability for category 70 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 71 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0007510727
+
+Proability for category 72 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0007510727
+
+Proability for category 73 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0002145922
+
+Proability for category 74 in various blocks
+********************************************
+            [,1]        [,2]
+[1,] 1.76616e-05 0.001180257
+
+Proability for category 75 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0004291844
+
+Proability for category 76 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0006437766
+
+Proability for category 77 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0003218883
+
+Proability for category 78 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 79 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 80 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 81 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0006437766
+
+Proability for category 82 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.001072961
+
+Proability for category 83 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0008583688
+
+Proability for category 84 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0004291844
+
+Proability for category 85 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0006437766
+
+Proability for category 86 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 87 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0005364805
+
+Proability for category 88 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0006437766
+
+Proability for category 89 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 90 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 91 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 92 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 93 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0006437766
+
+Proability for category 94 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0003218883
+
+Proability for category 95 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 96 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 97 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 98 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 99 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 100 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0004291844
+
+Proability for category 101 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0003218883
+
+Proability for category 102 in various blocks
+********************************************
+     [,1]        [,2]
+[1,]    0 0.001072961
+
+Proability for category 103 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0007510727
+
+Proability for category 104 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 105 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0007510727
+
+Proability for category 106 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 107 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0005364805
+
+Proability for category 108 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 109 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0006437766
+
+Proability for category 110 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0006437766
+
+Proability for category 111 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0002145922
+
+Proability for category 112 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 113 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 114 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 115 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 116 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 117 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 118 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 119 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 120 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 121 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 122 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0006437766
+
+Proability for category 123 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 124 in various blocks
+********************************************
+             [,1] [,2]
+[1,] 5.298481e-05    0
+
+Proability for category 125 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 126 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 127 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 128 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 129 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 130 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 131 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 132 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 133 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 134 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0003218883
+
+Proability for category 135 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0009656648
+
+Proability for category 136 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 137 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0006437766
+
+Proability for category 138 in various blocks
+********************************************
+             [,1] [,2]
+[1,] 3.532321e-05    0
+
+Proability for category 139 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 140 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 141 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 142 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 143 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 144 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 145 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 146 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0005364805
+
+Proability for category 147 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 148 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 149 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 150 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 151 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 152 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 153 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 154 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 155 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0003218883
+
+Proability for category 156 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 157 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 158 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 159 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 160 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 161 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 162 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 163 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 164 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0004291844
+
+Proability for category 165 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 166 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 167 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 168 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 169 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0003218883
+
+Proability for category 170 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0002145922
+
+Proability for category 171 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 172 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 173 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 174 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 175 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 176 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 177 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 178 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0007510727
+
+Proability for category 179 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 180 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 181 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 182 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 183 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 184 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 185 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 186 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 187 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 188 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 189 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 190 in various blocks
+********************************************
+             [,1] [,2]
+[1,] 3.532321e-05    0
+
+Proability for category 191 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 192 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 193 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 194 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 195 in various blocks
+********************************************
+             [,1]         [,2]
+[1,] 3.532321e-05 0.0001072961
+
+Proability for category 196 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 197 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 198 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 199 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 200 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 201 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 202 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 203 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 204 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 205 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 206 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0002145922
+
+Proability for category 207 in various blocks
+********************************************
+             [,1] [,2]
+[1,] 3.532321e-05    0
+
+Proability for category 208 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 209 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0003218883
+
+Proability for category 210 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 211 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 212 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 213 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 214 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 215 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 216 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 217 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 218 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 219 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 220 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 221 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 222 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 223 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 224 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 225 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 226 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 227 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 228 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 229 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 230 in various blocks
+********************************************
+             [,1] [,2]
+[1,] 3.532321e-05    0
+
+Proability for category 231 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 232 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 233 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 234 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 235 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 236 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 237 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 238 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 239 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 240 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 241 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 242 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 243 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 244 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 245 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 246 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 247 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 248 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 249 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 250 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0005364805
+
+Proability for category 251 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 252 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 253 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 254 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 255 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 256 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 257 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 258 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 259 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 260 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 261 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 262 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 263 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 264 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 265 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 266 in various blocks
+********************************************
+            [,1]         [,2]
+[1,] 1.76616e-05 0.0001072961
+
+Proability for category 267 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 268 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 269 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 270 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 271 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 272 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 273 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 274 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 275 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 276 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 277 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 278 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 279 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 280 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 281 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 282 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 283 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 284 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 285 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 286 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 287 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 288 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 289 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 290 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 291 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 292 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 293 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 294 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 295 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 296 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 297 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 298 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 299 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 300 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 301 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 302 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 303 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 304 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 305 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 306 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 307 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 308 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 309 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 310 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 311 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 312 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 313 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 314 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 315 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 316 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 317 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 318 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 319 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 320 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 321 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 322 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 323 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 324 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 325 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 326 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 327 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 328 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 329 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 330 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 331 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 332 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 333 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 334 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 335 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 336 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 337 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 338 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 339 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 340 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 341 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 342 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 343 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 344 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 345 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 346 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 347 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 348 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 349 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 350 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 351 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 352 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 353 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 354 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 355 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 356 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 357 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 358 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 359 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 360 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 361 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 362 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 363 in various blocks
+********************************************
+            [,1] [,2]
+[1,] 1.76616e-05    0
+
+Proability for category 364 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 365 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 366 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 367 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 368 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 369 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 370 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 371 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 372 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 373 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 374 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 375 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 376 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 377 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 378 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 379 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 380 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 381 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 382 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 383 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 384 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 385 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 386 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 387 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 388 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 389 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 390 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 391 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 392 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 393 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 394 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 395 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 396 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 397 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 398 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 399 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 400 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 401 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 402 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 403 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 404 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0002145922
+
+Proability for category 405 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 406 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 407 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 408 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 409 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 410 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 411 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 412 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 413 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 414 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 415 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 416 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 417 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 418 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 419 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 420 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 421 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 422 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 423 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 424 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 425 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 426 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 427 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 428 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 429 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 430 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 431 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 432 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 433 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 434 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 435 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 436 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 437 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 438 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 439 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 440 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 441 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 442 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 443 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 444 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 445 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 446 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 447 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 448 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 449 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 450 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 451 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 452 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 453 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 454 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 455 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 456 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 457 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 458 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 459 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 460 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 461 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 462 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 463 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 464 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 465 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 466 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 467 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 468 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 469 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 470 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 471 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 472 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 473 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 474 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 475 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 476 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 477 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 478 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 479 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 480 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 481 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 482 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 483 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 484 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 485 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 486 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 487 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 488 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 489 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 490 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 491 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 492 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 493 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 494 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 495 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 496 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 497 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 498 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 499 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 500 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 501 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 502 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 503 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 504 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 505 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 506 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 507 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 508 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 509 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 510 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 511 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 512 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 513 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 514 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 515 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 516 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 517 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 518 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 519 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 520 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 521 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 522 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 523 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 524 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 525 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 526 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 527 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 528 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 529 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 530 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 531 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 532 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 533 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 534 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 535 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 536 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 537 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 538 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 539 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 540 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 541 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 542 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 543 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 544 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 545 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 546 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 547 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Proability for category 548 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 549 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 550 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 551 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 552 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 553 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 554 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 555 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 556 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 557 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 558 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 559 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 560 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 561 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 562 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 563 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 564 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 565 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 566 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 567 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 568 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 569 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 570 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 571 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 572 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 573 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 574 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 575 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 576 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 577 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 578 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 579 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 580 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 581 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 582 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 583 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 584 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 585 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 586 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 587 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 588 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 589 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 590 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 591 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 592 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 593 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 594 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 595 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 596 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 597 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 598 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 599 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 600 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 601 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 602 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 603 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 604 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 605 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 606 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 607 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 608 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 609 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 610 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 611 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 612 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 613 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 614 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 615 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 616 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 617 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 618 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 619 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 620 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 621 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 622 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 623 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 624 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 625 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 626 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 627 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 628 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 629 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 630 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 631 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 632 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 633 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 634 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 635 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 636 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 637 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 638 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 639 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 640 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 641 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 642 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 643 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 644 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 645 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 646 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 647 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 648 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 649 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 650 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 651 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 652 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 653 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 654 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 655 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 656 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 657 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 658 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 659 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 660 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 661 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 662 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 663 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 664 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 665 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 666 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 667 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 668 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 669 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 670 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 671 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 672 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 673 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 674 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 675 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 676 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 677 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 678 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 679 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 680 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 681 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 682 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 683 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 684 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 685 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 686 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 687 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 688 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 689 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 690 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 691 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 692 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 693 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 694 in various blocks
+********************************************
+     [,1] [,2]
+[1,]    0    0
+
+Proability for category 695 in various blocks
+********************************************
+     [,1]         [,2]
+[1,]    0 0.0001072961
+
+Row proportions:  1
+Column proportions:  0.5 0.5
+Pseudo-likelihood:  -41319.6
+******************************************************************
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("generate.hierar.model")
+> ### * generate.hierar.model
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: generate.hierar.model
+> ### Title: Generate bi-clustering model based on vegan package.
+> ### Aliases: generate.hierar.model
+> ### Keywords: generateHierarClustGOdescrModel
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> 
+> data("dat11")
+> 
+> predF<- list()
+> 
+> required.param<- list(xID="proteins", yID=list(), distMethod="manhattan",
++ hclustMethod="ward.D2",nORh="mean")
+> 
+> hierar1<- generate.hierar.model(dat11,predF,required.param)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pred.clusters")
+> ### * pred.clusters
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pred.clusters
+> ### Title: Returns clustermemberships
+> ### Aliases: pred.clusters
+> ### Keywords: predclust
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> 
+> data("dat1p")
+> data("dat1m")
+> data("dat1i")
+> 
+> pred.res<- pred.clusters(dat1p, dat1m, dat1i) 
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  425.436 182.835 559.296 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

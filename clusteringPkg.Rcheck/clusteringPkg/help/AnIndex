@@ -1,0 +1,13 @@
+clusteringPkg-package	clusteringPkg-package
+clusteringPkg	clusteringPkg-package
+dat1	dat1
+dat11	dat11
+dat11i	dat11i
+dat11m	dat11m
+dat11p	dat11p
+dat1i	dat1i
+dat1m	dat1m
+dat1p	dat1p
+generate.biclust.model	generate.biclust.model
+generate.hierar.model	generate.hierar.model
+pred.clusters	pred.clusters

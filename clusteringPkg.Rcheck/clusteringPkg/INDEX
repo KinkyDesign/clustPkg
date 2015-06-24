@@ -1,0 +1,15 @@
+clusteringPkg-package   Generate cluster memberships
+dat1                    A sample data object
+dat11                   A sample data object
+dat11i                  Information for hierarchical clustering
+dat11m                  Serialized hierarchical clustering model file
+dat11p                  A sample data object
+dat1i                   Information for bi-clustering
+dat1m                   Serialized bi-clust model file
+dat1p                   A sample data object
+generate.biclust.model
+                        Generate bi-clustering model based on
+                        blockcluster package.
+generate.hierar.model   Generate bi-clustering model based on vegan
+                        package.
+pred.clusters           Returns clustermemberships
